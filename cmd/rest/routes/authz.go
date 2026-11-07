@@ -19,5 +19,7 @@ func v1AuthzRoutes(mux *http.ServeMux, verifier *auth.Verifier, h v1.Handler) {
 	api.HandleFunc("GET /api/wallets/{adminID}", auth.Require(admin, walletHandler.GetWallet))
 	api.HandleFunc("POST /api/wallets/{adminID}/adjust", auth.Require(admin, walletHandler.AdjustBalance))
 
+	v1AdminRoutes(api, h)
+
 	mux.Handle("/api/", auth.Authenticate(verifier)(api))
 }

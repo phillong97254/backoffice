@@ -23,8 +23,11 @@ func (i *impl) PasswordToken(ctx context.Context, input PasswordTokenInput) (Pas
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
+	switch {
+	case resp.StatusCode == http.StatusBadRequest || resp.StatusCode == http.StatusUnauthorized:
 		return PasswordTokenOutput{}, ErrInvalidCredentials
+	case resp.StatusCode != http.StatusOK:
+		return PasswordTokenOutput{}, fmt.Errorf("password token: status %d", resp.StatusCode)
 	}
 	var out PasswordTokenOutput
 	if err := json.NewDecoder(resp.Body).Decode(&out); err != nil {

@@ -23,3 +23,7 @@ wallet_service:
 user_service:
   url: http://localhost:8082
   timeout: 5 # giây
+
+authz_service:
+  addr: localhost:50052
+  timeout: 3 # giây

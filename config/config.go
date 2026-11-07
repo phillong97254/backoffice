@@ -13,6 +13,12 @@ type Config struct {
 	OAuth         OAuth         `mapstructure:"oauth"`
 	WalletService WalletService `mapstructure:"wallet_service"`
 	UserService   UserService   `mapstructure:"user_service"`
+	AuthzService  AuthzService  `mapstructure:"authz_service"`
+}
+
+type AuthzService struct {
+	Addr    string `mapstructure:"addr"`
+	Timeout int    `mapstructure:"timeout"` // giây
 }
 
 type RestServer struct {

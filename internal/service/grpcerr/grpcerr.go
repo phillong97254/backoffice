@@ -1,4 +1,6 @@
-package wallet
+// Package grpcerr đổi lỗi gRPC từ các service phía sau (wallet-service, authz-service)
+// sang lỗi HTTP (apperr) cho frontend. Dùng ở tầng service.
+package grpcerr
 
 import (
 	"net/http"
@@ -19,8 +21,7 @@ var grpcToHTTP = map[codes.Code]int{
 	codes.Unavailable:        http.StatusServiceUnavailable,
 }
 
-// fromGRPC đổi lỗi gRPC của wallet-service sang lỗi HTTP cho frontend.
-func fromGRPC(err error) error {
+func FromGRPC(err error) error {
 	st := status.Convert(err)
 	code, ok := grpcToHTTP[st.Code()]
 	if !ok {

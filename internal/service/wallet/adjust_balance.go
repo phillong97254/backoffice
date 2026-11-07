@@ -2,6 +2,7 @@ package wallet
 
 import (
 	"context"
+	"github.com/phillong97254/backoffice/internal/service/grpcerr"
 
 	walletGwy "github.com/phillong97254/backoffice/internal/gateway/wallet"
 	"github.com/phillong97254/go-lib/apperr"
@@ -18,7 +19,7 @@ func (i *impl) AdjustBalance(ctx context.Context, input AdjustBalanceInput) (Wal
 		AdminID: resolveAdminID(ctx, input.AdminID), Amount: input.Amount, Note: input.Note,
 	})
 	if err != nil {
-		return WalletOutput{}, fromGRPC(err)
+		return WalletOutput{}, grpcerr.FromGRPC(err)
 	}
 	return toWalletOutput(w), nil
 }

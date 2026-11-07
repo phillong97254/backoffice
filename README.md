@@ -1,8 +1,8 @@
 # backoffice  (:8080)
 
-REST API (BFF) + trang admin backoffice (`web/`, embed vào binary): `POST /api/login`, `GET /api/me`, `GET /api/wallets/{id}`, `POST /api/wallets/{id}/adjust`.
+REST API (BFF) + trang admin backoffice (`web/`, embed vào binary): `POST /api/login`, `GET /api/me`, `GET /api/wallets/{id}`, `POST /api/wallets/{id}/adjust`, và quản lý role cho superadmin: `GET /api/admin/roles`, `GET|POST /api/admin/users/{id}/roles`, `DELETE /api/admin/users/{id}/roles/{role}` (gọi authz-service).
 
-Gọi auth-service (REST: login, JWKS, client_credentials), wallet-service (gRPC, forward token admin) và user-service (REST, token của backoffice). Địa chỉ trong `config.yml`: `oauth.auth_url`, `wallet_service.addr`, `user_service.url`.
+Gọi auth-service (REST: login, JWKS, client_credentials), wallet-service và authz-service (gRPC, forward token admin) và user-service (REST, token của backoffice). Địa chỉ trong `config.yml`: `oauth.auth_url`, `wallet_service.addr`, `user_service.url`.
 
 ## Chạy
 
@@ -53,14 +53,14 @@ config/                      # config.go (viper) + config.yml
 vendor/                      # thư viện (kể cả go-lib), tạo bằng make mod
 internal/
     domain/
-    internal/gateway/{auth,user,wallet}  # client gọi sang service khác
-    internal/service/{auth,account,wallet}
-    internal/handler/rest/v1/{public/auth,authz/account,authz/wallet}
+    internal/gateway/{auth,user,wallet,authz}  # client gọi sang service khác
+    internal/service/{auth,account,wallet,role}
+    internal/handler/rest/v1/{public/auth,authz/account,authz/wallet,admin/role}
 ```
 
 ## gRPC contract
 
-`api/proto/wallet/v1/wallet.proto` → code sinh ra ở `pkg/gen/wallet/v1`. Đây là bản copy hợp đồng của wallet-service: sửa proto ở wallet-service trước rồi copy file `.proto` sang đây.
+`api/proto/{wallet,authz}/v1/*.proto` → code sinh ra ở `pkg/gen/{wallet,authz}/v1`. Đây là bản copy hợp đồng của wallet-service và authz-service: sửa proto ở repo gốc trước rồi copy file `.proto` sang đây.
 
 ```bash
 make gen-proto        # buf generate trong container go-tools
