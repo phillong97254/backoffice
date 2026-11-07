@@ -1,6 +1,6 @@
 package wallet
 
-import walletSvc "github.com/phil/backoffice/internal/service/wallet"
+import walletSvc "github.com/phillong97254/backoffice/internal/service/wallet"
 
 type GetWalletResponse struct {
 	Wallet       WalletResponse        `json:"wallet"`

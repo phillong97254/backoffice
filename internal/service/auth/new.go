@@ -3,7 +3,7 @@ package auth
 import (
 	"log/slog"
 
-	"github.com/phil/backoffice/internal/gateway"
+	"github.com/phillong97254/backoffice/internal/gateway"
 )
 
 type impl struct {

@@ -3,8 +3,8 @@ package wallet
 import (
 	"context"
 
-	walletGwy "github.com/phil/backoffice/internal/gateway/wallet"
-	"github.com/phil/go-lib/apperr"
+	walletGwy "github.com/phillong97254/backoffice/internal/gateway/wallet"
+	"github.com/phillong97254/go-lib/apperr"
 )
 
 func (i *impl) AdjustBalance(ctx context.Context, input AdjustBalanceInput) (WalletOutput, error) {

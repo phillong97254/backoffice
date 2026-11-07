@@ -16,12 +16,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/phil/backoffice/cmd/rest/routes"
-	"github.com/phil/backoffice/config"
-	"github.com/phil/backoffice/internal/gateway"
-	v1 "github.com/phil/backoffice/internal/handler/rest/v1"
-	"github.com/phil/backoffice/web"
-	auth "github.com/phil/go-lib/authkit"
+	"github.com/phillong97254/backoffice/cmd/rest/routes"
+	"github.com/phillong97254/backoffice/config"
+	"github.com/phillong97254/backoffice/internal/gateway"
+	v1 "github.com/phillong97254/backoffice/internal/handler/rest/v1"
+	"github.com/phillong97254/backoffice/web"
+	auth "github.com/phillong97254/go-lib/authkit"
 )
 
 func main() {

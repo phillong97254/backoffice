@@ -3,8 +3,8 @@ package auth
 import (
 	"strings"
 
-	authSvc "github.com/phil/backoffice/internal/service/auth"
-	"github.com/phil/go-lib/apperr"
+	authSvc "github.com/phillong97254/backoffice/internal/service/auth"
+	"github.com/phillong97254/go-lib/apperr"
 )
 
 type LoginRequest struct {

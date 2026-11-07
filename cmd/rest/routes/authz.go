@@ -3,8 +3,8 @@ package routes
 import (
 	"net/http"
 
-	v1 "github.com/phil/backoffice/internal/handler/rest/v1"
-	auth "github.com/phil/go-lib/authkit"
+	v1 "github.com/phillong97254/backoffice/internal/handler/rest/v1"
+	auth "github.com/phillong97254/go-lib/authkit"
 )
 
 // Mọi /api/* (trừ login) cần JWT. API ví còn cần role admin (authz lớp 1, chặn sớm ở backoffice).

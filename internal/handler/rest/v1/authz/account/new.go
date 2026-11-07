@@ -3,7 +3,7 @@ package account
 import (
 	"log/slog"
 
-	accountSvc "github.com/phil/backoffice/internal/service/account"
+	accountSvc "github.com/phillong97254/backoffice/internal/service/account"
 )
 
 type impl struct {

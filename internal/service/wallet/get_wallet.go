@@ -3,7 +3,7 @@ package wallet
 import (
 	"context"
 
-	walletGwy "github.com/phil/backoffice/internal/gateway/wallet"
+	walletGwy "github.com/phillong97254/backoffice/internal/gateway/wallet"
 )
 
 func (i *impl) GetWallet(ctx context.Context, input GetWalletInput) (GetWalletOutput, error) {

@@ -1,6 +1,6 @@
 package wallet
 
-import walletv1 "github.com/phil/backoffice/pkg/gen/wallet/v1"
+import walletv1 "github.com/phillong97254/backoffice/pkg/gen/wallet/v1"
 
 type WalletOutput struct {
 	AdminID       string

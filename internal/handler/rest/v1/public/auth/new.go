@@ -3,7 +3,7 @@ package auth
 import (
 	"log/slog"
 
-	authSvc "github.com/phil/backoffice/internal/service/auth"
+	authSvc "github.com/phillong97254/backoffice/internal/service/auth"
 )
 
 type impl struct {

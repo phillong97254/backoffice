@@ -4,7 +4,7 @@ name: "go-admin-wallet-backoffice"
 services:
   backoffice:
     container_name: backoffice-${ENV:-dev}
-    image: ${REGISTRY:-go-admin-wallet}/backoffice:${TAG:-dev-latest}
+    image: ${REGISTRY:-ghcr.io/phillong97254}/backoffice:${TAG:-dev-latest}
     build:
       context: .
     ports:

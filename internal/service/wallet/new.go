@@ -4,8 +4,8 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/phil/backoffice/config"
-	"github.com/phil/backoffice/internal/gateway"
+	"github.com/phillong97254/backoffice/config"
+	"github.com/phillong97254/backoffice/internal/gateway"
 )
 
 type impl struct {

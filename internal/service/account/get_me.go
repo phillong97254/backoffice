@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	userGwy "github.com/phil/backoffice/internal/gateway/user"
-	"github.com/phil/go-lib/apperr"
-	auth "github.com/phil/go-lib/authkit"
+	userGwy "github.com/phillong97254/backoffice/internal/gateway/user"
+	"github.com/phillong97254/go-lib/apperr"
+	auth "github.com/phillong97254/go-lib/authkit"
 )
 
 func (i *impl) GetMe(ctx context.Context) (GetMeOutput, error) {

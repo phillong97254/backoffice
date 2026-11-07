@@ -4,9 +4,9 @@ import (
 	"log/slog"
 	"sync"
 
-	"github.com/phil/backoffice/internal/gateway"
-	"github.com/phil/backoffice/internal/handler/rest/v1/public/auth"
-	authSvc "github.com/phil/backoffice/internal/service/auth"
+	"github.com/phillong97254/backoffice/internal/gateway"
+	"github.com/phillong97254/backoffice/internal/handler/rest/v1/public/auth"
+	authSvc "github.com/phillong97254/backoffice/internal/service/auth"
 )
 
 type impl struct {

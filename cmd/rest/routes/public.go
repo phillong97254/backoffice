@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	v1 "github.com/phil/backoffice/internal/handler/rest/v1"
+	v1 "github.com/phillong97254/backoffice/internal/handler/rest/v1"
 )
 
 func v1PublicRoutes(mux *http.ServeMux, h v1.Handler) {

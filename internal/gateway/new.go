@@ -3,10 +3,10 @@ package gateway
 import (
 	"fmt"
 
-	"github.com/phil/backoffice/config"
-	"github.com/phil/backoffice/internal/gateway/auth"
-	"github.com/phil/backoffice/internal/gateway/user"
-	"github.com/phil/backoffice/internal/gateway/wallet"
+	"github.com/phillong97254/backoffice/config"
+	"github.com/phillong97254/backoffice/internal/gateway/auth"
+	"github.com/phillong97254/backoffice/internal/gateway/user"
+	"github.com/phillong97254/backoffice/internal/gateway/wallet"
 )
 
 type impl struct {

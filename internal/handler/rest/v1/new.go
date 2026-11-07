@@ -3,10 +3,10 @@ package v1
 import (
 	"log/slog"
 
-	"github.com/phil/backoffice/config"
-	"github.com/phil/backoffice/internal/gateway"
-	"github.com/phil/backoffice/internal/handler/rest/v1/authz"
-	"github.com/phil/backoffice/internal/handler/rest/v1/public"
+	"github.com/phillong97254/backoffice/config"
+	"github.com/phillong97254/backoffice/internal/gateway"
+	"github.com/phillong97254/backoffice/internal/handler/rest/v1/authz"
+	"github.com/phillong97254/backoffice/internal/handler/rest/v1/public"
 )
 
 type impl struct {

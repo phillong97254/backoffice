@@ -1,6 +1,6 @@
 package account
 
-import accountSvc "github.com/phil/backoffice/internal/service/account"
+import accountSvc "github.com/phillong97254/backoffice/internal/service/account"
 
 type GetMeResponse struct {
 	Sub     string          `json:"sub"`

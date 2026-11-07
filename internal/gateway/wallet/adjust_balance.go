@@ -3,7 +3,7 @@ package wallet
 import (
 	"context"
 
-	walletv1 "github.com/phil/backoffice/pkg/gen/wallet/v1"
+	walletv1 "github.com/phillong97254/backoffice/pkg/gen/wallet/v1"
 )
 
 func (i *impl) AdjustBalance(ctx context.Context, input AdjustBalanceInput) (WalletOutput, error) {

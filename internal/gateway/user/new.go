@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/oauth2/clientcredentials"
 
-	"github.com/phil/backoffice/config"
+	"github.com/phillong97254/backoffice/config"
 )
 
 type impl struct {
