@@ -1,0 +1,14 @@
+package auth
+
+type PasswordTokenInput struct {
+	Username string
+	Password string
+}
+
+// PasswordTokenOutput theo định dạng token response của OAuth2.
+type PasswordTokenOutput struct {
+	AccessToken string `json:"access_token"`
+	TokenType   string `json:"token_type"`
+	ExpiresIn   int    `json:"expires_in"`
+	Scope       string `json:"scope"`
+}

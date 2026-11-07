@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Backoffice</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:760px;margin:24px auto;padding:0 16px;color:#1d2433;background:#f6f7f9}
+  .card{background:#fff;border:1px solid #e3e6ea;border-radius:10px;padding:16px;margin-bottom:16px}
+  input,button{font:inherit;padding:6px 10px;margin:4px 4px 4px 0}
+  button{cursor:pointer;border:1px solid #3557d6;background:#3557d6;color:#fff;border-radius:6px}
+  table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:4px;border-bottom:1px solid #eee}
+  .err{color:#c0392b}.muted{color:#6b7280;font-size:.9em}code{background:#eef;padding:1px 4px;border-radius:4px}
+</style>
+</head>
+<body>
+<h1>Admin Backoffice</h1>
+
+<div class="card" id="login">
+  <b>Đăng nhập</b> <span class="muted">(alice/alice123 = admin, bob/bob123 = superadmin, carol/carol123 = viewer)</span><br>
+  <input id="u" placeholder="username" value="alice"><input id="p" type="password" placeholder="password" value="alice123">
+  <button onclick="login()">Login</button>
+</div>
+
+<div class="card" id="me" hidden></div>
+
+<div class="card" id="wallet" hidden>
+  <b>Ví</b> <input id="target" value="me" size="8"> <button onclick="loadWallet()">Xem</button>
+  <div id="walletBody"></div>
+  <hr>
+  <b>Điều chỉnh số dư</b> <span class="muted">(chỉ superadmin)</span><br>
+  <input id="amt" type="number" placeholder="amount" value="100000"><input id="note" placeholder="note" value="bonus">
+  <button onclick="adjust()">Adjust</button>
+</div>
+
+<div class="card"><b>Log</b><pre id="log" class="muted"></pre></div>
+
+<script>
+let token = null;
+const $ = id => document.getElementById(id);
+const log = (m) => $('log').textContent = m + '\n' + $('log').textContent;
+
+async function api(path, opts = {}) {
+  const res = await fetch(path, {...opts, headers: {'Content-Type':'application/json', ...(token ? {Authorization: 'Bearer ' + token} : {})}});
+  const body = await res.json().catch(() => ({}));
+  log(`${opts.method||'GET'} ${path} -> ${res.status}` + (body.error ? ' ' + body.error : ''));
+  if (!res.ok) throw new Error(body.error || res.status);
+  return body;
+}
+
+async function login() {
+  try {
+    const t = await api('/api/login', {method:'POST', body: JSON.stringify({username:$('u').value, password:$('p').value})});
+    token = t.access_token;
+    const me = await api('/api/me');
+    $('me').hidden = false;
+    $('me').innerHTML = `<b>${me.profile.name}</b> (${me.profile.email}, ${me.profile.department})<br>
+      roles: <code>${me.roles.join(', ')}</code> · scope: <code>${me.scope}</code>`;
+    $('wallet').hidden = false;
+    loadWallet();
+  } catch (e) { $('me').hidden = false; $('me').innerHTML = `<span class="err">${e.message}</span>`; }
+}
+
+async function loadWallet() {
+  try {
+    const d = await api('/api/wallets/' + encodeURIComponent($('target').value));
+    const w = d.wallet;
+    $('walletBody').innerHTML = `<p><b>${w.admin_id}</b>: ${Number(w.balance||0).toLocaleString('vi-VN')} ${w.currency}</p>
+      <table><tr><th>ID</th><th>Số tiền</th><th>Ghi chú</th><th>Bởi</th></tr>
+      ${(d.transactions||[]).map(t => `<tr><td>${t.id}</td><td>${Number(t.amount).toLocaleString('vi-VN')}</td><td>${t.note}</td><td>${t.created_by}</td></tr>`).join('')}</table>`;
+  } catch (e) { $('walletBody').innerHTML = `<p class="err">${e.message}</p>`; }
+}
+
+async function adjust() {
+  try {
+    await api('/api/wallets/' + encodeURIComponent($('target').value) + '/adjust',
+      {method:'POST', body: JSON.stringify({amount: Number($('amt').value), note: $('note').value})});
+    loadWallet();
+  } catch (e) { $('walletBody').insertAdjacentHTML('beforeend', `<p class="err">${e.message}</p>`); }
+}
+</script>
+</body>
+</html>

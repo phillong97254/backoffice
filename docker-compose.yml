@@ -1,0 +1,25 @@
+name: "go-admin-wallet-backoffice"
+# Chạy riêng service này trong Docker (make up). Các service khác chạy trên máy (go run)
+# hoặc container khác, gọi qua host.docker.internal. Chạy cả hệ thống: docker-compose.yml ở thư mục gốc.
+services:
+  backoffice:
+    container_name: backoffice-${ENV:-dev}
+    image: ${REGISTRY:-go-admin-wallet}/backoffice:${TAG:-dev-latest}
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      REST_SERVER_ADDR: ":8080"
+      OAUTH_AUTH_URL: http://host.docker.internal:9000
+      WALLET_SERVICE_ADDR: host.docker.internal:50051
+      USER_SERVICE_URL: http://host.docker.internal:8082
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    networks:
+      - backoffice-network
+
+networks:
+  backoffice-network:
+    driver: bridge

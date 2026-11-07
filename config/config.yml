@@ -1,0 +1,25 @@
+rest_server:
+  name: backoffice
+  addr: ":8080"
+  shutdown_timeout: 5
+
+api:
+  version: v1.0.0
+  env: debug
+
+oauth:
+  # auth-service: lấy JWKS để verify token, đổi password lấy token, xin token client_credentials
+  auth_url: http://localhost:9000
+  issuer: http://localhost:9000
+  audience: admin-api
+  client_id: backoffice
+  client_secret: backoffice-secret # demo; thực tế đặt qua env OAUTH_CLIENT_SECRET / Vault
+  scopes: users:read
+
+wallet_service:
+  addr: localhost:50051
+  timeout: 3 # giây
+
+user_service:
+  url: http://localhost:8082
+  timeout: 5 # giây
