@@ -3,8 +3,8 @@ package account
 import (
 	"net/http"
 
-	"github.com/phil/backoffice/internal/apperr"
-	auth "github.com/phil/backoffice/pkg/authkit"
+	"github.com/phil/go-lib/apperr"
+	auth "github.com/phil/go-lib/authkit"
 )
 
 func (i *impl) GetMe(w http.ResponseWriter, r *http.Request) {

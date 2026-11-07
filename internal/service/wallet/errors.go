@@ -6,7 +6,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/phil/backoffice/internal/apperr"
+	"github.com/phil/go-lib/apperr"
 )
 
 var grpcToHTTP = map[codes.Code]int{

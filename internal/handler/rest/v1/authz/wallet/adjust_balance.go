@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/phil/backoffice/internal/apperr"
 	walletSvc "github.com/phil/backoffice/internal/service/wallet"
-	auth "github.com/phil/backoffice/pkg/authkit"
+	"github.com/phil/go-lib/apperr"
+	auth "github.com/phil/go-lib/authkit"
 )
 
 func (i *impl) AdjustBalance(w http.ResponseWriter, r *http.Request) {

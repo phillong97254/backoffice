@@ -5,8 +5,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/phil/backoffice/internal/apperr"
 	authGwy "github.com/phil/backoffice/internal/gateway/auth"
+	"github.com/phil/go-lib/apperr"
 )
 
 // Login đổi username/password lấy access token ở auth-service.

@@ -3,7 +3,7 @@ package wallet
 import (
 	"context"
 
-	auth "github.com/phil/backoffice/pkg/authkit"
+	auth "github.com/phil/go-lib/authkit"
 )
 
 // resolveAdminID: "me" = admin đang đăng nhập.

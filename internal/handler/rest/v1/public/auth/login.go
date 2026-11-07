@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/phil/backoffice/internal/apperr"
 	authSvc "github.com/phil/backoffice/internal/service/auth"
-	authkit "github.com/phil/backoffice/pkg/authkit"
+	"github.com/phil/go-lib/apperr"
+	authkit "github.com/phil/go-lib/authkit"
 )
 
 func (i *impl) Login(w http.ResponseWriter, r *http.Request) {

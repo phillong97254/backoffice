@@ -5,8 +5,8 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 
 	"github.com/phil/backoffice/config"
-	auth "github.com/phil/backoffice/pkg/authkit"
 	walletv1 "github.com/phil/backoffice/pkg/gen/wallet/v1"
+	auth "github.com/phil/go-lib/authkit"
 )
 
 type impl struct {

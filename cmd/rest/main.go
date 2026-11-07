@@ -20,8 +20,8 @@ import (
 	"github.com/phil/backoffice/config"
 	"github.com/phil/backoffice/internal/gateway"
 	v1 "github.com/phil/backoffice/internal/handler/rest/v1"
-	auth "github.com/phil/backoffice/pkg/authkit"
 	"github.com/phil/backoffice/web"
+	auth "github.com/phil/go-lib/authkit"
 )
 
 func main() {

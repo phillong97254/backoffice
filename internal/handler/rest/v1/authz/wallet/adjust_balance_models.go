@@ -3,7 +3,7 @@ package wallet
 import (
 	"strings"
 
-	"github.com/phil/backoffice/internal/apperr"
+	"github.com/phil/go-lib/apperr"
 )
 
 type AdjustBalanceRequest struct {
