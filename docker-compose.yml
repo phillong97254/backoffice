@@ -11,6 +11,7 @@ services:
       - "8080:8080"
     environment:
       REST_SERVER_ADDR: ":8080"
+      OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET:?đặt trong .env (xem .env.example)}
       OAUTH_AUTH_URL: http://host.docker.internal:9000
       WALLET_SERVICE_ADDR: host.docker.internal:50051
       USER_SERVICE_URL: http://host.docker.internal:8082

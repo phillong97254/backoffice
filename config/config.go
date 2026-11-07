@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"strings"
 
 	"github.com/spf13/viper"
@@ -66,6 +67,9 @@ func NewConfig() (*Config, error) {
 
 	if err := v.Unmarshal(&cfg); err != nil {
 		return nil, err
+	}
+	if cfg.OAuth.ClientSecret == "" {
+		return nil, errors.New("missing OAUTH_CLIENT_SECRET (xem .env.example)")
 	}
 
 	return &cfg, nil

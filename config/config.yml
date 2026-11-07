@@ -13,7 +13,7 @@ oauth:
   issuer: http://localhost:9000
   audience: admin-api
   client_id: backoffice
-  client_secret: backoffice-secret # demo; thực tế đặt qua env OAUTH_CLIENT_SECRET / Vault
+  client_secret: "" # KHÔNG ghi ở đây, đặt qua env OAUTH_CLIENT_SECRET (file .env, không commit)
   scopes: users:read
 
 wallet_service:
